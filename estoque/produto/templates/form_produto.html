@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p class="subtitle is-1">Formulário de Produto</p>
+    <form method="POST">
+
+
+        {% csrf_token %}
+        
+        <div class="field"> 
+            <label class="label">{{ form.produto.label }}</label> 
+            <div class="control"> 
+                {{ form.produto }} 
+            </div> 
+        </div> 
+
+        <div class="field"> 
+            <label class="label">{{ form.descricao.label }}</label> 
+            <div class="control"> 
+                {{ form.descricao }} 
+            </div> 
+        </div> 
+
+        <div class="field"> 
+            <label class="label">{{ form.cor.label }}</label> 
+            <div class="control"> 
+                <div class="select is-fullwidth"> 
+                    {{ form.cor }} 
+                </div> 
+            </div> 
+        </div> 
+
+
+        <button class="button is-primary" type="submit">salvar</button>
+    </form>
+{% endblock %}

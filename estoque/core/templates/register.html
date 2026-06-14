@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="columns is-centered"> 
+<div class="column is-4"> 
+<h1 class="title has-text-centered">Registrar</h1> 
+<form method="post">
+    {% csrf_token %}
+
+    <div class="field">
+        <label class="label">Usuário</label>
+        <div class="control">
+            <input class="input" type="text" name="username" required>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Senha</label>
+        <div class="control">
+            <input class="input" type="password" name="password1" required>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Confirmar senha</label>
+        <div class="control">
+            <input class="input" type="password" name="password2" required>
+        </div>
+    </div>
+
+    {% if form.errors %}
+        <div class="notification is-danger">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="field mt-4">
+        <div class="control">
+            <button class="button is-primary is-fullwidth">
+                Registrar
+            </button>
+        </div>
+    </div>
+</form>
+    </div> 
+</div> 
+
+
+{% endblock content %}

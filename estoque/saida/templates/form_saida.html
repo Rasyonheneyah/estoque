@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<p class="subtitle is-1">Lista de entradas</p>
+<form method="POST">
+    {% csrf_token %}´
+     {% for field in form %}
+            <div class="field">
+                <label class="label" for="{{ field.id.for_label }}">{{  field.label  }}</label>
+                
+                {% if fields.fields.widgets.input_type == 'select' %}
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        {{ field }}
+                    </div>
+                </div>
+                {% else %}
+                <div class="control">
+                    {{ field }}
+                </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="button is-primary">salvar</button>
+
+    </form>
+
+{% endblock %}

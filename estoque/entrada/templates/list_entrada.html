@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="subtitle">Entrada</h3>
+<a class="button is-success mb-4" href="{% url 'entrada:new_entrada' %}">Novo</a>
+<table class="table">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    {% for entrada in entradas %}
+    <tr>
+        <th>{{ entrada.id }}</th>
+        <td>{{ entrada.produto }}</td>
+        <td class="textCentral">{{ entrada.preco }}</td>
+        <td class="textCentral">{{ entrada.quantidade }}</td>
+        <td><a class="button is-warning" href="{% url  'entrada:update_entrada' entrada.id %}">alterar</a></td>
+        <td><a class="button is-danger" href="{% url  'entrada:delete_entrada' entrada.id %}">deletar</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+{% endblock %}
