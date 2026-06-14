@@ -48,7 +48,7 @@ def update_saida(request, pk):
 
         if form.is_valid():
             form.save(commit = False)
-            if form.cleaned_data['quantidade'] <= form.cleaned_data['produto'].quantidade and form.cleaned_data['quantidade'] >= 1:
+            if form.cleaned_data['quantidade'] <= form.cleaned_data['produto'].quantidade + quantidade and form.cleaned_data['quantidade'] >= 1:
 
                 form.cleaned_data['produto'].quantidade = (form.cleaned_data['produto'].quantidade - form.cleaned_data['quantidade']) + quantidade
                 form.cleaned_data['produto'].save_base()
